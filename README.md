@@ -5,6 +5,7 @@ A c++ library for basic linear algebra operations, along with various helpful me
 Add the contents of **include/** to your compiler's include path. In case the contents of **include/** are moved, the `.hpp` file and `.tpp` files must be placed in the same directory. A program that uses this library will look something like this:
 ```c++
 #include "Matrix.hpp"
+#include <iostream>
 
 int main()
 {
