@@ -1,3 +1,5 @@
+/*This is an example file meant to demonstrate a few basic applications of the Matrix.hpp header*/
+
 #include <iostream>
 // Including the Matrix.hpp header
 #include "Matrix.hpp"
@@ -33,4 +35,5 @@ int main()
     (A * X - B).display();
 
     return 0;
+
 }
