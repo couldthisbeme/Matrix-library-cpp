@@ -125,4 +125,68 @@ namespace linalg
 
         return column_replaced;
     }
+    template <typename T>
+    void Matrix<T>::vstack(const Matrix<T> &other)
+    {
+        if (other.data == nullptr)
+        {
+            return;
+        }
+        else if (data == nullptr)
+        {
+            rows = other.rows;
+            cols = other.cols;
+
+            data = new T[rows * cols];
+
+            for (size_t i{0}; i < rows * cols; ++i)
+            {
+                data[i] = other.data[i];
+            }
+
+            return;
+        }
+        else if (this != &other)
+        {
+            if (other.cols != cols)
+            {
+                throw std::logic_error("Incompatible number of columns for vertical stacking.");
+            }
+
+            size_t old_rows{rows};
+            rows += other.rows;
+
+            T *new_data = new T[rows * cols]();
+
+            for (size_t i{0}; i < old_rows * cols; ++i)
+            {
+                new_data[i] = data[i];
+            }
+
+            for (size_t i{0}; i < other.rows; ++i)
+            {
+                for (size_t j{0}; j < cols; ++j)
+                {
+                    new_data[(old_rows + i) * cols + j] = other(i, j);
+                }
+            }
+
+            delete[] data;
+            data = new_data;
+        }
+        else
+        {
+            T *new_data = new T[2 * rows * cols]();
+
+            for (size_t i{0}; i < rows * cols; ++i)
+            {
+                new_data[i] = data[i];
+                new_data[i + rows * cols] = data[i];
+            }
+
+            rows *= 2;
+            delete[] data;
+            data = new_data;
+        }
+    }
 }
