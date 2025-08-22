@@ -292,3 +292,12 @@ X.display(); // Displays the solution
 
 (A * X).display(); // This is equal to B
 ```
+
+- **`void vstack(Matrix other)`**: Adds `other` to the bottom of the object it is called upon, as long as the dimesnions are compatible.
+```c++
+linalg::Matrix<double> A{3, 3}, B{40, 3}, C, D{3, 12};
+
+A.vstack(B); // Works, A now has 43 rows and 3 columns
+A.vstack(C); // Works, no changes are made to A
+A.vstack(D); // Error, D has more rows than A so the operation cannot happen
+```
