@@ -62,6 +62,7 @@ namespace linalg
         Matrix conjugate() const;
         bool is_self_adjoint() const;
         Matrix replace_column(const size_t &column1, const Matrix<T> &new_column) const;
+        void vstack(const Matrix &other);
 
     private:
         size_t rows, cols;
@@ -92,5 +93,6 @@ namespace linalg
 #include "MatrixExtraOperators.tpp"
 #include "MatrixExtraFunctions.tpp"
 #include "MatrixPrivateMethods.tpp"
+
 
 #endif
