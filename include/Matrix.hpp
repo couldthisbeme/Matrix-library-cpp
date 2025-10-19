@@ -20,6 +20,7 @@ namespace linalg
         Matrix(Matrix &&other) noexcept;
         Matrix();
         ~Matrix();
+        void read_csv(std::string csv_path, char delimiter);
 
         // MatrixOperators.tpp
         T &operator()(size_t i, size_t j);
@@ -96,3 +97,4 @@ namespace linalg
 
 
 #endif
+
