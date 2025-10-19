@@ -28,6 +28,7 @@ int main()
 ## Quick start features
 - Namespace: `linalg`
 - Constructors: Two numbers for 2D matrix, one number for 1D matrix.
+- Read .csv files.
 - Accessing operator: `()`
 - Assignment operator: `=`
 - Logical operators `== !=`
@@ -42,6 +43,11 @@ int main()
 linalg::Matrix<float> E; // Empty object
 linalg::Matrix<double> X{4}; // Object with 4 rows and 1 column. Holds values of type double
 linalg::Matrix<int> A{2,6}; // Object with two rows and 6 columns. Holds values of type int
+```
+A csv file can be read once a Matrix object has been initialized. The type of variables held by the matrix has to be the same as the values in the csv file. A delimiter `char` must also be passed. If uncertain of what to put, `','` should work most of the time.
+```c++
+linalg::Matrix<double> A;
+A.read_csv(R"(path\to\your\file.csv)", ',');
 ```
 - **Accessing elements**: The elements of a 2D object can be accessed using `()` with two positional indices. The elements of a 1D object can be accessed using `()`, either with one or two positional indices. Attempting to access the elements of an empty object will result in a `std::logic_error` being thrown.
 ```c++
